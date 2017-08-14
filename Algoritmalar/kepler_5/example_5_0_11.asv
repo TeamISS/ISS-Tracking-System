@@ -24,7 +24,8 @@ rho(i,2) = cos(dec(i))*sin(ra(i));
 rho(i,3) = sin(dec(i));
 end
 %...Algorithms 5.5 and 5.6:
-[r, v, r_old, v_old] = gauss(rho(1,:), rho(2,:), rho(3,:), R(1,:), R(2,:), R(3,:),t(1), t(2), t(3));
+[r, v, r_old, v_old] = gauss(rho(1,:), rho(2,:), rho(3,:), 
+R(1,:), R(2,:), R(3,:),t(1), t(2), t(3));
 %...Algorithm 4.1 for the initial estimate of the state vector
 % and for the iteratively improved one
 coe_old = coe_from_sv(r_old,v_old);
@@ -32,7 +33,8 @@ coe = coe_from_sv(r,v);
 %...Echo the input data and output the solution to
 % the command window:
 fprintf('---------------------------------------------------')
-fprintf('\n Example 5.11: Orbit determination by the Gauss method\n')
+fprintf('\n Example 5.11: Orbit determination by the Gauss
+method\n')
 fprintf('\n Radius of earth (km) = %g', Re)
 fprintf('\n Flattening factor = %g', f)
 fprintf('\n Gravitational parameter (kmˆ3/sˆ2) = %g', mu)
@@ -48,8 +50,10 @@ end
 fprintf('\n\n Solution:\n')
 fprintf('\n Without iterative improvement...\n')
 fprintf('\n');
-fprintf('\n r (km) = [%g, %g, %g]',r_old(1), r_old(2), r_old(3))
-fprintf('\n v (km/s) = [%g, %g, %g]',v_old(1), v_old(2), v_old(3))
+fprintf('\n r (km) = [%g, %g, %g]',
+r_old(1), r_old(2), r_old(3))
+fprintf('\n v (km/s) = [%g, %g, %g]',
+v_old(1), v_old(2), v_old(3))
 fprintf('\n');
 fprintf('\n Angular momentum (kmˆ2/s) = %g', coe_old(1))
 fprintf('\n Eccentricity = %g', coe_old(2))
