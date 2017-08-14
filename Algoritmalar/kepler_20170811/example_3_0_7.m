@@ -6,7 +6,7 @@ V0 = [2.6679 4.6210 0];
 t = 3600;
 %...
 %...Algorithm 3.4:
-[R V] = rv_from_r0v0(R0, V0, t);
+[R, V] = rv_from_r0v0(R0, V0, t);
 %...Echo the input data and output the results to the command window:
 fprintf('---------------------------------------------------')
 fprintf('\n Example 3.7\n')

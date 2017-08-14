@@ -7,7 +7,7 @@ v0 = norm(V0);
 %...Initial radial velocity:
 vr0 = dot(R0, V0)/r0;
 %...Reciprocal of the semimajor axis (from the energy equation):
-alpha = 2/r0 - v0ˆ2/mu;
+alpha = 2/r0 - v0^2/mu;
 %...Compute the universal anomaly:
 x = kepler_U(t, r0, vr0, alpha);
 %...Compute the f and g functions:

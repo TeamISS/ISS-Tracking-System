@@ -1,7 +1,6 @@
 % ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 function F = kepler_H(e, M)
 
-
 error = 1.e-8;
 %...Starting value for F:
 F = M;

@@ -14,9 +14,9 @@ function [f, g] = f_and_g(x, t, ro, a)
 % User M-functions required: stumpC, stumpS
 % ------------------------------------------------------------
 global mu
-z = a*xˆ2;
+z = a*x^2;
 %...Equation 3.66a:
-f = 1 - xˆ2/ro*stumpC(z);
+f = 1 - x^2/ro*stumpC(z);
 %...Equation 3.66b:
-g = t - 1/sqrt(mu)*xˆ3*stumpS(z);
+g = t - 1/sqrt(mu)*x^3*stumpS(z);
 % ˜˜˜
