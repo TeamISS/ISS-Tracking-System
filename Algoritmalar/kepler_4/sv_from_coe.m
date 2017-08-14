@@ -27,7 +27,7 @@ incl = coe(4);
 w = coe(5);
 TA = coe(6);
 %...Equations 4.37 and 4.38 (rp and vp are column vectors):
-rp = (hˆ2/mu) * (1/(1 + e*cos(TA))) * (cos(TA)*[1;0;0] ...
+rp = (h^2/mu) * (1/(1 + e*cos(TA))) * (cos(TA)*[1;0;0] ...
 + sin(TA)*[0;1;0]);
 vp = (mu/h) * (-sin(TA)*[1;0;0] + (e + cos(TA))*[0;1;0]);
 %...Equation 4.39:

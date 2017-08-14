@@ -1,6 +1,6 @@
 function coe = coe_from_sv(R,V)
 % ˜
-global mu;
+
 eps = 1.e-10;
 r = norm(R);
 v = norm(V);
@@ -13,7 +13,7 @@ incl = acos(H(3)/h);
 N = cross([0 0 1],H);
 n = norm(N);
 %...Equation 4.9:
-if n ? = 0
+if n ~= 0
 RA = acos(N(1)/n);
 if N(2) < 0
 RA = 2*pi - RA;
@@ -21,10 +21,10 @@ end
 else
 RA = 0;
 end
-E = 1/mu*((vˆ2 - mu/r)*R - r*vr*V);
+E = 1/mu*((v^2 - mu/r)*R - r*vr*V);
 e = norm(E);
 %...Equation 4.12 (incorporating the case e = 0):
-if n ? = 0
+if n ~= 0
 if e > eps
 w = acos(dot(N,E)/n/e);
 if E(3) < 0
@@ -51,6 +51,6 @@ TA = 2*pi - acos(dot(N,R)/n/r);
 end
 end
 %...Equation 2.61 (a < 0 for a hyperbola):
-a = hˆ2/mu/(1 - eˆ2);
+a = h^2/mu/(1 - e^2);
 coe = [h e RA incl w TA a];
 % ˜˜˜˜˜

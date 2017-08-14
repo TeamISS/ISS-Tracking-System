@@ -27,7 +27,7 @@ fprintf('\n True anomaly (deg) = %g', coe(6)/deg)
 fprintf('\n Semimajor axis (km): = %g', coe(7))
 %...if the orbit is an ellipse, output its period:
 if coe(2)<1
-T = 2*pi/sqrt(mu)*coe(7)ˆ1.5; % Equation 2.73
+T = 2*pi/sqrt(mu)*coe(7)^1.5; % Equation 2.73
 fprintf('\n Period:')
 fprintf('\n Seconds = %g', T)
 fprintf('\n Minutes = %g', T/60)
