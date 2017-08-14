@@ -1,5 +1,5 @@
 function [r, v, r_old, v_old] = ...
-gauss(Rho1, Rho2, Rho3, R1, R2, R3, t1, t2, t3)
+gauss (Rho1, Rho2, Rho3, R1, R2, R3, t1, t2, t3)
 % ˜
 global mu
 %...Equations 5.98:
@@ -20,39 +20,39 @@ D = [[dot(R1,p1) dot(R1,p2) dot(R1,p3)]
 E = dot(R2,Rho2);
 %...Equations 5.112b and 5.112c:
 A = 1/Do*(-D(1,2)*tau3/tau + D(2,2) + D(3,2)*tau1/tau);
-B = 1/6/Do*(D(1,2)*(tau3ˆ2 - tauˆ2)*tau3/tau ...
-+ D(3,2)*(tauˆ2 - tau1ˆ2)*tau1/tau);
+B = 1/6/Do*(D(1,2)*(tau3^2 - tau^2)*tau3/tau ...
++ D(3,2)*(tau^2 - tau1^2)*tau1/tau);
 %...Equations 5.117:
-a = -(Aˆ2 + 2*A*E + norm(R2)ˆ2);
+a = -(A^2 + 2*A*E + norm(R2)^2);
 b = -2*mu*B*(A + E);
-c = -(mu*B)ˆ2;
+c = -(mu*B)^2;
 %...Calculate the roots of Equation 5.116 using MATLAB’s
 % polynomial ‘roots’ solver:
 Roots = roots([1 0 a 0 0 b 0 0 c]);
 %...Find the positive real root:
 x = posroot(Roots);
 %...Equations 5.99a and 5.99b:
-f1 = 1 - 1/2*mu*tau1ˆ2/xˆ3;
-f3 = 1 - 1/2*mu*tau3ˆ2/xˆ3;
+f1 = 1 - 1/2*mu*tau1^2/x^3;
+f3 = 1 - 1/2*mu*tau3^2/x^3;
 %...Equations 5.100a and 5.100b:
-g1 = tau1 - 1/6*mu*(tau1/x)ˆ3;
-g3 = tau3 - 1/6*mu*(tau3/x)ˆ3;
+g1 = tau1 - 1/6*mu*(tau1/x)^3;
+g3 = tau3 - 1/6*mu*(tau3/x)^3;
 %...Equation 5.112a:
-rho2 = A + mu*B/xˆ3;
+rho2 = A + mu*B/x^3;
 %...Equation 5.113:
-rho1 = 1/Do*((6*(D(3,1)*tau1/tau3 + D(2,1)*tau/tau3)*xˆ3 ...
-+ mu*D(3,1)*(tauˆ2 - tau1ˆ2)*tau1/tau3) ...
-/(6*xˆ3 + mu*(tauˆ2 - tau3ˆ2)) - D(1,1));
+rho1 = 1/Do*((6*(D(3,1)*tau1/tau3 + D(2,1)*tau/tau3)*x^3 ...
++ mu*D(3,1)*(tau^2 - tau1^2)*tau1/tau3) ...
+/(6*x^3 + mu*(tau^2 - tau3^2)) - D(1,1));
 %...Equation 5.114:
-rho3 = 1/Do*((6*(D(1,3)*tau3/tau1 - D(2,3)*tau/tau1)*xˆ3 ...
-+ mu*D(1,3)*(tauˆ2 - tau3ˆ2)*tau3/tau1) ...
-/(6*xˆ3 + mu*(tauˆ2 - tau3ˆ2)) - D(3,3));
+rho3 = 1/Do*((6*(D(1,3)*tau3/tau1 - D(2,3)*tau/tau1)*x^3 ...
++ mu*D(1,3)*(tau^2 - tau3^2)*tau3/tau1) ...
+/(6*x^3 + mu*(tau^2 - tau3^2)) - D(3,3));
 r1 = R1 + rho1*Rho1;
 r2 = R2 + rho2*Rho2;
 r3 = R3 + rho3*Rho3;
 %...Equation 5.118:
 v2 = (-f3*r1 + f1*r3)/(f1*g3 - f3*g1);
-%...Save the initial estimates of r2 and v2:
+%...Save the in itial estimates of r2 and v2:
 r_old = r2;
 v_old = v2;
 %...End of Algorithm 5.5
@@ -64,14 +64,14 @@ n =0;
 nmax = 1000;
 tol = 1.e-8;
 %...Iterative improvement loop:
-while ((diff1 > tol) & (diff2 > tol) & (diff3 > tol)) ...
-& (n < nmax)
+while ((diff1 > tol) && (diff2 > tol) && (diff3 > tol)) ...
+&& (n < nmax)
 n = n+1;
 %...Compute quantities required by universal kepler’s equation:
 ro = norm(r2);
 vo = norm(v2);
 vro = dot(v2,r2)/ro;
-a = 2/ro - voˆ2/mu;
+a = 2/ro - vo^2/mu;
 %...Solve universal Kepler’s equation at times tau1 and tau3
 % for universal anomalies x1 and x3:
 x1 = kepler_U(tau1, ro, vro, a);
@@ -132,7 +132,7 @@ function x = posroot(Roots)
 % User M-functions required: none
 % ------------------------------------------------------------
 %...Construct the vector of positive real roots:
-posroots = Roots(find(Roots>0 & ˜imag(Roots)));
+posroots = Roots(Roots>0 & imag(Roots));
 npositive = length(posroots);
 %...Exit if no positive roots exist:
 if npositive == 0
@@ -151,7 +151,7 @@ fprintf('\n root #%g = %g', i, posroots(i))
 end
 fprintf('\n\n Make a choice:\n')
 nchoice = 0;
-while nchoice < 1 | nchoice > npositive
+while nchoice < 1 || nchoice > npositive
 nchoice = input(' Use root #? ');
 end
 x = posroots(nchoice);
