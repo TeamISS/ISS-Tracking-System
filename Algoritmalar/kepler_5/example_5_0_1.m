@@ -16,9 +16,7 @@ fprintf('\n r1 (km) = [%g %g %g]', r1(1), r1(2), r1(3))
 fprintf('\n r2 (km) = [%g %g %g]', r2(1), r2(2), r2(3))
 fprintf('\n r3 (km) = [%g %g %g]', r3(1), r3(2), r3(3))
 fprintf('\n\n');
-%...Algorithm 5.1:
 [v2, ierr] = gibbs(r1, r2, r3);
-%...If the vectors r1, r2, r3, are not coplanar, abort:
 if ierr == 1
 fprintf('\n These vectors are not coplanar.\n\n')
 return
@@ -46,7 +44,7 @@ fprintf('\n True anomaly (deg) = %g', TA/deg)
 fprintf('\n Semimajor axis (km) = %g', a)
 %...If the orbit is an ellipse, output the period:
 if e < 1
-T = 2*pi/sqrt(mu)*coe(7)ˆ1.5;
+T = 2*pi/sqrt(mu)*coe(7)^1.5;
 fprintf('\n Period (s) = %g', T)
 end
 fprintf('\n-----------------------------------------------\n')

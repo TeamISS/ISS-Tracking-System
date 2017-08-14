@@ -1,5 +1,37 @@
 function [V1, V2] = lambert(R1, R2, t, string)
-% ˜˜
+% ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+%
+% This function solves Lambert’s problem.
+%
+% mu - gravitational parameter (kmˆ3/sˆ2)
+% R1, R2 - initial and final position vectors (km)
+% r1, r2 - magnitudes of R1 and R2
+% t - the time of flight from R1 to R2
+% (a constant) (s)
+% V1, V2 - initial and final velocity vectors (km/s)
+% c12 - cross product of R1 into R2
+% theta - angle between R1 and R2
+% string - 'pro' if the orbit is prograde
+% 'retro' if the orbit is retrograde
+% A - a constant given by Equation 5.35
+% z - alpha*xˆ2, where alpha is the reciprocal of the
+% semimajor axis and x is the universal anomaly
+% y(z) - a function of z given by Equation 5.38
+% F(z,t) - a function of the variable z and constant t,
+% given by Equation 5.40
+% dFdz(z) - the derivative of F(z,t), given by
+% Equation 5.43
+% ratio - F/dFdz
+% tol - tolerance on precision of convergence
+% nmax - maximum number of iterations of Newton’s
+% procedure
+% f, g - Lagrange coefficients
+% gdot - time derivative of g
+% C(z), S(z) - Stumpff functions
+% dum - a dummy variable
+%
+% User M-functions required: stumpC and stumpS
+% -----------------------------------------------------------
 global mu
 global r1 r2 A
 %...Magnitudes of R1 and R2:
@@ -17,7 +49,8 @@ if c12(3) >= 0
 theta = 2*pi - theta;
 end
 else
-string = 'pro'
+    string =  'pro';
+ 
 fprintf('\n ** Prograde trajectory assumed.\n')
 end
 %...Equation 5.35:
@@ -28,13 +61,14 @@ z = -100;
 while F(z,t) < 0
 z = z + 0.1;
 end
+%...Set an error tolerance and a limit on the number of iterations:
 tol = 1.e-8;
 nmax = 5000;
 %...Iterate on Equation 5.45 until z is determined to within
 %...the error tolerance:
 ratio = 1;
 n =0;
-while (abs(ratio) > tol) & (n <= nmax)
+while (abs(ratio) > tol) && (n <= nmax)
 n = n + 1;
 ratio = F(z,t)/dFdz(z);
 z = z - ratio;
@@ -65,19 +99,15 @@ return
 %...Equation 5.40:
 function dum = F(z,t)
 global mu A
-dum = (y(z)/C(z))ˆ1.5*S(z) + A*sqrt(y(z)) - sqrt(mu)*t;
+dum = (y(z)/C(z))^1.5*S(z) + A*sqrt(y(z)) - sqrt(mu)*t;
 return
 %...Equation 5.43:
 function dum = dFdz(z)
 global A
 if z == 0
-dum = sqrt(2)/40*y(0)ˆ1.5 + A/8*(sqrt(y(0)) ...
-+ A*sqrt(1/2/y(0)));
+dum = sqrt(2)/40*y(0)^1.5 + A/8*(sqrt(y(0)) + A*sqrt(1/2/y(0)));
 else
-dum = (y(z)/C(z))ˆ1.5*(1/2/z*(C(z) - 3*S(z)/2/C(z)) ...
-+ 3*S(z)ˆ2/4/C(z)) ...
-+ A/8*(3*S(z)/C(z)*sqrt(y(z)) ...
-+ A*sqrt(C(z)/y(z)));
+dum = (y(z)/C(z))^1.5*(1/2/z*(C(z) - 3*S(z)/2/C(z)) + 3*S(z)^2/4/C(z)) + A/8*(3*S(z)/C(z)*sqrt(y(z)) + A*sqrt(C(z)/y(z)));
 end
 return
 %...Stumpff functions:
@@ -87,4 +117,4 @@ return
 function dum = S(z)
 dum = stumpS(z);
 return
-% ˜˜˜˜
+% ˜˜˜˜˜˜˜˜˜
