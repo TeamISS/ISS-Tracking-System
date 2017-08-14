@@ -13,10 +13,8 @@ fprintf('---------------------------------------------------')
 fprintf('\n Example 4.3\n')
 fprintf('\n Gravitational parameter (kmˆ3/sˆ2) = %g\n', mu)
 fprintf('\n State vector:\n')
-fprintf('\n r (km) = [%g %g %g]', ...
-r(1), r(2), r(3))
-fprintf('\n v (km/s) = [%g %g %g]', ...
-v(1), v(2), v(3))
+fprintf('\n r (km) = [%g %g %g]', r(1), r(2), r(3))
+fprintf('\n v (km/s) = [%g %g %g]',v(1), v(2), v(3))
 disp(' ')
 fprintf('\n Angular momentum (kmˆ2/s) = %g', coe(1))
 fprintf('\n Eccentricity = %g', coe(2))

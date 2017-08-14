@@ -1,6 +1,6 @@
 function coe = coe_from_sv(R,V)
 % ˜
-
+mu = 398600;
 eps = 1.e-10;
 r = norm(R);
 v = norm(V);
