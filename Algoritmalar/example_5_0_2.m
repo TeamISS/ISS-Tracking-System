@@ -1,5 +1,10 @@
+<<<<<<< HEAD:Algoritmalar/kepler_5/example_5_0_2.m
 clear all
 clc
+=======
+
+clear
+>>>>>>> master:Algoritmalar/example_5_0_2.m
 global mu
 deg = pi/180;
 mu = 398600;
@@ -24,12 +29,21 @@ fprintf('---------------------------------------------------')
 fprintf('\n Example 5.2: Lambert''s Problem\n')
 fprintf('\n\n Input data:\n');
 fprintf('\n Gravitational parameter (kmˆ3/sˆ2) = %g\n', mu)
+<<<<<<< HEAD:Algoritmalar/kepler_5/example_5_0_2.m
 fprintf('\n r1 (km) = [%g %g %g]', r1(1), r1(2), r1(3))
 fprintf('\n r2 (km) = [%g %g %g]', r2(1), r2(2), r2(3))
 fprintf('\n Elapsed time (s) = %g', dt);
 fprintf('\n\n Solution:\n')
 fprintf('\n v1 (km/s) = [%g %g %g]', v1(1), v1(2), v1(3))
 fprintf('\n v2 (km/s) = [%g %g %g]', v2(1), v2(2), v2(3))
+=======
+fprintf('\n r1 (km) = [%g %g %g]',r1(1), r1(2), r1(3))
+fprintf('\n r2 (km) = [%g %g %g]',r2(1), r2(2), r2(3))
+fprintf('\n Elapsed time (s) = %g', dt);
+fprintf('\n\n Solution:\n')
+fprintf('\n v1 (km/s) = [%g %g %g]',v1(1), v1(2), v1(3))
+fprintf('\n v2 (km/s) = [%g %g %g]',v2(1), v2(2), v2(3))
+>>>>>>> master:Algoritmalar/example_5_0_2.m
 fprintf('\n\n Orbital elements:')
 fprintf('\n Angular momentum (kmˆ2/s) = %g', coe(1))
 fprintf('\n Eccentricity = %g', coe(2))
@@ -39,7 +53,11 @@ fprintf('\n Argument of perigee (deg) = %g', coe(5)/deg)
 fprintf('\n True anomaly initial (deg) = %g', TA1/deg)
 fprintf('\n True anomaly final (deg) = %g', TA2/deg)
 fprintf('\n Semimajor axis (km) = %g', coe(7))
+<<<<<<< HEAD:Algoritmalar/kepler_5/example_5_0_2.m
 fprintf('\n Periapse radius (km) = %g', coe(1)^2/mu/(1 + coe(2)))
+=======
+fprintf('\n Periapse radius (km) = %g',coe(1)^2/mu/(1 + coe(2)))
+>>>>>>> master:Algoritmalar/example_5_0_2.m
 if coe(2)<1
 T = 2*pi/sqrt(mu)*coe(7)^1.5;
 fprintf('\n Period:')

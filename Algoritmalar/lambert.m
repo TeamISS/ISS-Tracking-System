@@ -105,9 +105,15 @@ return
 function dum = dFdz(z)
 global A
 if z == 0
+<<<<<<< HEAD:Algoritmalar/kepler_5/lambert.m
 dum = sqrt(2)/40*y(0)^1.5 + A/8*(sqrt(y(0)) + A*sqrt(1/2/y(0)));
 else
 dum = (y(z)/C(z))^1.5*(1/2/z*(C(z) - 3*S(z)/2/C(z)) + 3*S(z)^2/4/C(z)) + A/8*(3*S(z)/C(z)*sqrt(y(z)) + A*sqrt(C(z)/y(z)));
+=======
+dum = sqrt(2)/40*y(0)^1.5 + A/8*(sqrt(y(0))+ A*sqrt(1/2/y(0)));
+else
+dum = (y(z)/C(z))^1.5*(1/2/z*(C(z) - 3*S(z)/2/C(z))+ 3*S(z)^2/4/C(z))+ A/8*(3*S(z)/C(z)*sqrt(y(z))+ A*sqrt(C(z)/y(z)));
+>>>>>>> master:Algoritmalar/lambert.m
 end
 return
 %...Stumpff functions:

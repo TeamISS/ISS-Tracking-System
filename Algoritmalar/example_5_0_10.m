@@ -17,8 +17,12 @@ phi = 60;
 H = 0;
 %...
 %...Algorithm 5.4:
+<<<<<<< HEAD:Algoritmalar/kepler_5/example_5_0_10.m
 [r,v] = rv_from_observe(rho, rhodot, A, Adot, a, adot, theta,
 phi, H);
+=======
+[r,v] = rv_from_observe(rho, rhodot, A, Adot, a, adot, theta,phi, H);
+>>>>>>> master:Algoritmalar/example_5_0_10.m
 coe = coe_from_sv(r,v);
 h = coe(1);
 e = coe(2);

@@ -1,4 +1,4 @@
-function x = kepler_U(dt, ro, vro, a)
+    function x = kepler_U(dt, ro, vro, a)
 % ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 %
 % This function uses Newton’s method to solve the universal
@@ -33,8 +33,7 @@ n = n + 1;
 C = stumpC(a*x^2);
 S = stumpS(a*x^2);
 F = ro*vro/sqrt(mu)*x^2*C + (1 - a*ro)*x^3*S + ro*x-sqrt(mu)*dt;
-dFdx = ro*vro/sqrt(mu)*x*(1 - a*x^2*S)+...
-(1 - a*ro)*x^2*C+ro;
+dFdx = ro*vro/sqrt(mu)*x*(1 - a*x^2*S)+(1 - a*ro)*x^2*C+ro;
 ratio = F/dFdx;
 x = x - ratio;
 end
