@@ -1,5 +1,5 @@
 % ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-function E = kepler_E(e, 
+function E = kepler_E(e,M) 
 
 %
 % This function uses Newton’s method to solve Kepler’s
