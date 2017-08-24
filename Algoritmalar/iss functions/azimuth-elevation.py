@@ -2,24 +2,8 @@ import sys
 import os
 import math
 import numpy as np
+from iss import norm, distance
 
-def norm(vector):
-
-    z = 0
-    for i in range(len(vector)):
-        z += (vector[i]*vector[i])           
-
-    return math.sqrt(z)
-
-def distance(initial, satellite):
-
-    dot = [x-y for x,y in zip(initial,satellite)]
-
-    for i in range(len(dot)):
-        dot[i] = dot[i]*dot[i]
-
-    dist = sum(dot)                   
-    return math.sqrt(dist)
 
 def oldrangeVector(satellite, initial):
     
