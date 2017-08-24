@@ -54,7 +54,7 @@ def main():
        print "z:", z
        c=distance(a,b) 
        print c
-       print math.sqrt(3)
+       print math.sqrt(3) 
             
          
 if __name__ == "__main__":
