@@ -2,7 +2,7 @@ import sys
 import os
 import math
 import numpy as np
-from iss import norm, distance
+from Vector_Functions import norm, distance
 
 
 def oldrangeVector(satellite, initial):
