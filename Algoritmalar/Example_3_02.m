@@ -1,5 +1,5 @@
 % ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-% Example_3_02
+% Example_3_0
 % ˜˜˜˜˜˜˜˜˜˜˜˜
 %
 % This program uses Algorithm 3.1 and the data of Example 3.2

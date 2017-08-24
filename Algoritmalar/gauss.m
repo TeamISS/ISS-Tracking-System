@@ -1,5 +1,4 @@
-function [r, v, r_old, v_old] = ...
-gauss (Rho1, Rho2, Rho3, R1, R2, R3, t1, t2, t3)
+function [r, v, r_old, v_old] =gauss (Rho1, Rho2, Rho3, R1, R2, R3, t1, t2, t3)
 % ˜
 global mu
 %...Equations 5.98:
@@ -20,8 +19,7 @@ D = [[dot(R1,p1) dot(R1,p2) dot(R1,p3)]
 E = dot(R2,Rho2);
 %...Equations 5.112b and 5.112c:
 A = 1/Do*(-D(1,2)*tau3/tau + D(2,2) + D(3,2)*tau1/tau);
-B = 1/6/Do*(D(1,2)*(tau3^2 - tau^2)*tau3/tau ...
-+ D(3,2)*(tau^2 - tau1^2)*tau1/tau);
+B = 1/6/Do*(D(1,2)*(tau3^2 - tau^2)*tau3/tau + D(3,2)*(tau^2 - tau1^2)*tau1/tau);
 %...Equations 5.117:
 a = -(A^2 + 2*A*E + norm(R2)^2);
 b = -2*mu*B*(A + E);
@@ -40,13 +38,9 @@ g3 = tau3 - 1/6*mu*(tau3/x)^3;
 %...Equation 5.112a:
 rho2 = A + mu*B/x^3;
 %...Equation 5.113:
-rho1 = 1/Do*((6*(D(3,1)*tau1/tau3 + D(2,1)*tau/tau3)*x^3 ...
-+ mu*D(3,1)*(tau^2 - tau1^2)*tau1/tau3) ...
-/(6*x^3 + mu*(tau^2 - tau3^2)) - D(1,1));
+rho1 = 1/Do*((6*(D(3,1)*tau1/tau3 + D(2,1)*tau/tau3)*x^3 + mu*D(3,1)*(tau^2 - tau1^2)*tau1/tau3)/(6*x^3 + mu*(tau^2 - tau3^2)) - D(1,1));
 %...Equation 5.114:
-rho3 = 1/Do*((6*(D(1,3)*tau3/tau1 - D(2,3)*tau/tau1)*x^3 ...
-+ mu*D(1,3)*(tau^2 - tau3^2)*tau3/tau1) ...
-/(6*x^3 + mu*(tau^2 - tau3^2)) - D(3,3));
+rho3 = 1/Do*((6*(D(1,3)*tau3/tau1 - D(2,3)*tau/tau1)*x^3 + mu*D(1,3)*(tau^2 - tau3^2)*tau3/tau1)/(6*x^3 + mu*(tau^2 - tau3^2)) - D(3,3));
 r1 = R1 + rho1*Rho1;
 r2 = R2 + rho2*Rho2;
 r3 = R3 + rho3*Rho3;
@@ -64,8 +58,7 @@ n =0;
 nmax = 1000;
 tol = 1.e-8;
 %...Iterative improvement loop:
-while ((diff1 > tol) && (diff2 > tol) && (diff3 > tol)) ...
-&& (n < nmax)
+while ((diff1 > tol) && (diff2 > tol) && (diff3 > tol))&& (n < nmax)
 n = n+1;
 %...Compute quantities required by universal kepler’s equation:
 ro = norm(r2);
