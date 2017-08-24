@@ -2,24 +2,9 @@ import sys
 import os
 import math
 import numpy as np
+from Vector_Functions import norm, distance
+from siderealTime import localSiderealtime
 
-def norm(vector):
-
-    z = 0
-    for i in range(len(vector)):
-        z += (vector[i]*vector[i])           
-
-    return math.sqrt(z)
-
-def distance(initial, satellite):
-
-    dot = [x-y for x,y in zip(initial,satellite)]
-
-    for i in range(len(dot)):
-        dot[i] = dot[i]*dot[i]
-
-    dist = sum(dot)                   
-    return math.sqrt(dist)
 
 def oldrangeVector(satellite, initial):
     
@@ -36,7 +21,7 @@ def newrangeVector():
     ry = vector[1]
     rz = vector[2]
 
-    sideReal = math.radians(228.55)
+    sideReal = localSiderealtime()
 
     rS = math.sin(sideReal)*math.cos(0.694)*rx + math.sin(sideReal)*math.sin(0.694)*ry - math.cos(sideReal)*rz
 
@@ -68,7 +53,7 @@ def main():
     satellite = [3220.788, 3268.788, 4983.089]
     biz = [4126.088, 2659.977, 4059.869]
     a = newrangeVector()
-    b =oldrangeVector(satellite, biz)
+    b = oldrangeVector(satellite, biz)
 
     print norm(a), a , "Azimuth:", azimuth(a), "Elevation:" , elevation(a)
     print norm(b), b , "Azimuth:", azimuth(b), "Elevation:" , elevation(b)
