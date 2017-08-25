@@ -48,7 +48,8 @@ def localSiderealtime():
     if LST< 0:
         LST = LST + 24
 
-    radLST = math.degrees(7.27 * 10**-5 * 3600 * LST)
+    radLST = 7.27 * 10**-5 * 3600 * LST
+
     return radLST
         
 

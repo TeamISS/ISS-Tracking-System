@@ -17,7 +17,7 @@ if c12(3) >= 0
 theta = 2*pi - theta;
 end
 else
-string = 'pro'
+string = 'pro';
 fprintf('\n ** Prograde trajectory assumed.\n')
 end
 %...Equation 5.35:
